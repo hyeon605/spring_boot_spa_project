@@ -13,7 +13,7 @@
 <div id='board'>
     <h2>게시판</h2>
     <form class='frm' id='frm_view'>
-        <label>아현이들</label>
+        <label>올리지마~~~~~</label>
         <input type='text' name='id' value='${bVo.id }'/>
         <span>${bVo.nal }</span>
         <span>[조회: ${bVo.hit }</span>
