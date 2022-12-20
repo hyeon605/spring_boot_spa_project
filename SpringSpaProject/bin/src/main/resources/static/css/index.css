@@ -2,6 +2,8 @@
 
 *{
     box-sizing: border-box;   
+    background-color:#000;
+    color:red;
 }
 #main{
     width:1000px;
