@@ -13,7 +13,7 @@
 <div id='main'>
     <header>
         <nav>
-            <a href="/">서연이의 디자인  감각</a>
+            <a href="/">서연이의 디자인 감각</a>
             <a href="#" class='btnGuestBook'>방명록이다 자식들아 너네가 뭘 알아~</a>
             <a href="#" class='btnBoard'>게시판에 들어가서 글 좀 써라 이것들아 !!</a>
         </nav>
@@ -30,7 +30,7 @@
     
     <footer>
         <font size='5' color='#00f'>S P A</font><br/>
-        servlet,jstl,jquery,mysql로 만들어진 Single Page Application  ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ
+        servlet,jstl,jquery,mysql로 만들어진 Single Page Application  ㅜㅜㅜ
     </footer>
 </div>
 </body>
