@@ -13,12 +13,12 @@
 <div id='board'>
     <h2>게시판</h2>
     <form class='frm' id='frm_view'>
-        <label>아현이들</label>
+        <label>작성자</label>
         <input type='text' name='id' value='${bVo.id }'/>
         <span>${bVo.nal }</span>
         <span>[조회: ${bVo.hit }</span>
         <br/>
-        <label>생각</label>
+        <label>제목</label>
         <input type='text' name='subject' value='${bVo.subject }'/><br/>
     
         <div class='doc'>
@@ -36,7 +36,7 @@
         </div>
         <br/>
         <div class='btnZone'>
-            <input type='button' value='아현이목록' class='btnSelect'>
+            <input type='button' value='목록' class='btnSelect'>
             <input type='button' value='수정' class='btnUpdate'>
             <input type='button' value='삭제' class='btnDeleteR'>
             <input type='button' value='댓글' class='btnRepl'>
