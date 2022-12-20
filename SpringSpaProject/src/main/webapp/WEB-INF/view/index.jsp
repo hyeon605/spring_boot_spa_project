@@ -14,8 +14,8 @@
     <header>
         <nav>
             <a href="/">HOME</a>
-            <a href="#" class='btnGuestBook'>방명록</a>
-            <a href="#" class='btnBoard'>게시판</a>
+            <a href="#" class='btnGuestBook'>방명록이다 자식들아 너네가 뭘 알아~</a>
+            <a href="#" class='btnBoard'>게시판에 들어가서 글 좀 써라 이것들아 !!</a>
         </nav>
     </header>
     
@@ -30,7 +30,7 @@
     
     <footer>
         <font size='5' color='#00f'>S P A</font><br/>
-        servlet,jstl,jquery,mysql로 만들어진 Single Page Application
+        servlet,jstl,jquery,mysql로 만들어진 Single Page Application  ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ
     </footer>
 </div>
 </body>
