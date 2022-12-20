@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>전...아현입니다...</title>
 <link rel='stylesheet' href='css/index.css'/>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script defer src='js/index.js'></script>
+
 </head>
 <body>
 <div id='main'>
