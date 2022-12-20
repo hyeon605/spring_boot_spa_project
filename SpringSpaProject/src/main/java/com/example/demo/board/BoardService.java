@@ -28,6 +28,7 @@ public class BoardService {
 	
 	public List<BoardVo> select(PageVo pVo){ 
 		//totSize 계산
+		
 		int totSize = mapper.totList(pVo);
 		pVo.setTotSize(totSize);
 		this.pVo = pVo;
