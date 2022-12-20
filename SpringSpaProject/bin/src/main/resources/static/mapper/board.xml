@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mybatis.BoardMapper">
+	
+	<select id='totList' parameterType="com.example.demo.board.PageVo" resultType="Integer">
+        SELECT COUNT(id) totSize FROM board
+        WHERE id=#{findStr} OR SUBJECT LIKE '%${findStr}%'
+        OR doc LIKE '%${findStr}%'
+    </select>
+    
+    <select id="select" parameterType="com.example.demo.board.PageVo" resultType="com.example.demo.board.BoardVo">
+        select sno, id, grp, seq, deep, hit, date_format(nal, '%y-%m-%d') nal,
+              (select count(pSno) from boardAtt where pSno=board.sno) attCnt,
+              concat( lpad(' ', deep*3, '&#160;'),
+                  case
+                    when deep>0 then concat('└', subject)
+                    else subject
+                  end
+              ) subject
+        from board
+        WHERE id=#{findStr} OR SUBJECT LIKE '%${findStr}%'
+        OR doc LIKE '%${findStr}%'
+        order by grp desc, seq asc, deep asc
+        limit ${startNo}, ${listSize}
+    </select>
+
+	<select id="board10" resultType="com.example.demo.board.BoardVo">
+		select * from board 
+		where deep=0
+		order by sno desc limit 0,10
+	</select>
+	
+	    <select id='view' parameterType="Integer" resultType="com.example.demo.board.BoardVo">
+        select sno, id, subject, doc, nal, hit, grp, seq, deep from board
+        where sno = ${_parameter}
+    </select>
+    
+    <update id='hitUp' parameterType="Integer">
+        update board set hit=hit+1 where sno = ${_parameter}
+    </update>
+    
+    <select id='attList' parameterType="Integer" resultType="com.example.demo.board.AttVo">
+        select sno, pSno, oriFile, sysFile
+        from boardAtt
+        where pSno = ${_parameter}
+    </select>
+    
+    <select id='replCheck' parameterType="com.example.demo.board.BoardVo" resultType="Integer">
+        select count(sno) from board where grp=#{grp} and seq=${seq+1}
+        and deep>#{deep}
+    </select>
+    
+    <!-- insert -->
+    <insert id='insertR' parameterType='com.example.demo.board.BoardVo'>
+        insert into board(sno, grp, seq, deep, id, subject, doc, nal, hit)
+        values(getSerial('i'), getSerial(''), 0,0, #{id}, #{subject}, #{doc}, sysdate(), 0)
+    </insert>
+    
+    <insert id='insertAttList' parameterType='com.example.demo.board.AttVo'>
+        insert into boardAtt(pSno, sysFile, oriFile)
+        values
+        <foreach collection="list" item="vo" separator=",">
+            (getSerial(''), #{vo.sysFile}, #{vo.oriFile} )
+        </foreach>
+    </insert>
+    
+    <!-- repl -->
+    <update id='seqUp' parameterType='com.example.demo.board.BoardVo'>
+        update board set seq=seq+1 where seq>${seq} and grp=${grp}
+    </update>
+    
+    <insert id='replR' parameterType='com.example.demo.board.BoardVo'>
+        insert into board(sno, grp, seq, deep, id, subject, doc, nal, hit)
+        values(getSerial('i'), ${grp}, ${seq+1}, ${deep+1}, #{id}, #{subject},
+              #{doc}, sysdate(), 0)
+    </insert>   
+    
+    <!-- update -->
+    <update id="update" parameterType="com.example.demo.board.BoardVo">
+        update board set subject = #{subject}, doc = #{doc}
+        where sno = ${sno}
+    </update>
+    
+    <insert id='attUpdate' parameterType='com.example.demo.board.BoardVo'>
+        insert into boardAtt(pSno, sysFile, oriFile)
+        values
+        <foreach collection="attList" item="vo" separator=",">
+            (${sno}, #{vo.sysFile}, #{vo.oriFile} )
+        </foreach>
+    </insert>
+    
+    <select id='boardRepl' parameterType='com.example.demo.board.BoardVo' resultType='Integer'>
+       select count(sno) cnt from board where sno=${pSno}
+    </select>
+    
+    <!-- delete -->
+    <select id='delFileList' parameterType="Integer" resultType="String">
+        select sysFile from boardAtt
+        where pSno = ${_parameter}
+    </select>
+    
+    <delete id='delete' parameterType='com.example.demo.board.BoardVo'>
+        delete from board where sno=${sno}
+    </delete>
+    
+    <delete id="attDelete" parameterType="String">
+        delete from boardAtt where sysFile in(
+             <foreach collection="array" item="file" separator=",">
+                 #{file}
+             </foreach>
+         )
+    </delete>
+    
+    <delete id='attDeleteAll' parameterType="Integer">
+        delete from boardAtt where pSno=#{_parameter}
+    </delete>
+</mapper>
