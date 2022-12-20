@@ -3,6 +3,7 @@
 *{
     box-sizing: border-box;   
     background-color:#000;
+    background-image: url("/images/ghost.jpeg");
     color:red;
 }
 #main{
