@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mybatis.GuestbookMapper">
+	<select id="totSize" parameterType="com.example.demo.guestbook.GPageVo" resultType="Integer">
+		select count(id) from guestbook 
+		where id like '%${findStr}%' or doc like '%${findStr}%' or nal like '%${findStr}%'		 
+	</select>
+	
+	<select id="list" parameterType="com.example.demo.guestbook.GPageVo" resultType="com.example.demo.guestbook.GuestbookVo">
+		select * from guestbook 
+		where id like '%${findStr}%' or doc like '%${findStr}%' or nal like '%${findStr}%'	<!-- 위의 where조건과 반드시 일치해야함 -->
+		order by nal desc, id asc
+		limit #{startNo}, #{listSize}
+	</select>
+	
+	<select id="select10" resultType="com.example.demo.guestbook.GuestbookVo">
+		select * from guestbook order by nal desc limit 0,10
+	</select>
+	
+	<insert id="insert" parameterType="com.example.demo.guestbook.GuestbookVo">
+		insert into guestbook(id, doc, nal, pwd) 
+		values(#{id}, #{doc}, now(), #{pwd})
+	</insert>
+	
+	<delete id="delete" parameterType="com.example.demo.guestbook.GuestbookVo">
+		delete from guestbook where sno=#{sno} and pwd=#{pwd}
+	</delete>
+	
+	<update id="update" parameterType="com.example.demo.guestbook.GuestbookVo">
+		update guestbook set id=#{id},doc=#{doc} where sno=#{sno} and pwd=#{pwd}
+	</update>
+</mapper>

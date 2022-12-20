@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+/* 조회 --------------- */
+#board>.frm_search{
+    text-align: right;
+}
+#board>.title{
+    background: #e1eec3;
+    /* color:#fff; */
+    padding:2px;
+    margin:3px 0;
+}
+#board .title{
+    display: flex;
+}
+#board .item{
+    display: flex;
+}
+#board label{
+    display: inline-block;
+    width:66px;
+    text-align: right;
+}
+#board .no{ width:120px;}
+#board .subject{width:400px; flex-grow:12;}
+#board .id{width:220px; flex-grow:1;}
+#board .nal{width:170px; flex-grow:1;}
+#board .hit{width:80px; flex-grow:1;}
+#board .item:hover{
+    background-color: #f05053;
+    cursor: pointer;
+}
+#board .item:last-child {
+    border-bottom:1px solid #ccc;
+    margin:3px 0;
+}
+#board .btnZone{
+    text-align: center;
+}
+#board .btnZone input{
+    border-radius: 14px;
+    border:1px solid #bbb;
+    padding:2px 7px;
+}
+
+/* 입력 -----------------------------*/
+#board .frm_insert>.subject{
+    width:600px;
+    
+}
+#board .frm_insert>.doc{
+    width: 600px;
+    height:300px;
+}
+
+/* 상세보기 -------------------------- */
+#board h2{
+	text-align:center;
+}
+#board #frm_view{
+	margin: auto;
+}
+#board span.attFile{
+    background: #e1eec3;
+    padding:3px 5px;
+    border-radius: 4px;
+}
+#board #frm_view>.doc{
+    min-height: 300px;
+    background: #e1eec3;
+    padding:14px;
+    margin:10px 0;
+}
+#board .attFileZone span{
+	display: inline-block;
+}
+#board .attFileZone span>img{
+	width: 150px;
+	height: 100px;
+}
+
+/* update ------------------------- */
+#board .frm_update>.subject{
+    width:600px;
+    
+}
+#board .frm_update>.doc{
+    width: 600px;
+    height:300px;
+}
+#board .frm_update .delFile{
+    width:auto;
+    display:inline-block;
+    margin:5px 14px;
+}
+input[type="checkbox"]:checked  ~ span{
+    text-decoration:line-through;
+    color:#f00;
+    /*box-shadow: 0 0 0 10px orange;*/
+}
