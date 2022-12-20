@@ -30,7 +30,7 @@
     
     <footer>
         <font size='5' color='#00f'>S P A</font><br/>
-        servlet,jstl,jquery,mysql로 만들어진 Single Page Application
+        servlet,jstl,jquery,mysql로 만들어진 Single Page Application  ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ
     </footer>
 </div>
 </body>
